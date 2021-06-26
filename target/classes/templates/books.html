@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="${message}"/>
+    <p>Список книг</p>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Год издания</th>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.year}"></td>
+        </tr>
+    </table>
+    <form th:action="@{/books}"  method="post">
+        <p>Название: <input type="text" name="title" /></p>
+        <p>Автор: <input type="text" name="author" /></p>
+        <p>Год издания: <input type="text" name="year" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</body>
+</html>
