@@ -3,13 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Список книг</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style type="text/css">
+        .page-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .book-list {
+            width: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .book-list-items {
+            margin-bottom: 30px;
+        }
+        .book {
+            font-size: 24px;
+            border: 2px solid #337ab7;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px 35px;
+            transition: opacity 0.4s;
+        }
+        .book:hover {
+            text-decoration: none;
+            opacity: 0.7;
+            color: #337ab7;
+        }
+        .btn-add {
+            width: 100%;
+            font-size: 20px;
+            transition: background-color 0.4s, border-color 0.4s, color 0.4s;
+        }
+    </style>
 </head>
 <body>
-<div th:each="Book : ${booksList}">
-    <a th:href="@{/{id}(id=${Book.getId()})}" th:text="${Book.getTitle()}">Книга</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12 page-content">
+            <div class="book-list">
+                <div th:each="Book : ${booksList}" class="book-list-items">
+                    <a th:href="@{/{id}(id=${Book.getId()})}" th:text="${Book.getTitle()}" class="book">Книга</a>
+                </div>
+                <a href="/add" class="btn btn-primary btn-lg btn-add">Добавить книгу</a>
+            </div>
+        </div>
+    </div>
 </div>
-<br>
-<hr/>
-<a href="/add">Добавить книгу</a>
 </body>
 </html>

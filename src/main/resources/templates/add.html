@@ -3,21 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить книгу</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style type="text/css">
+        .page-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .form-title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .control-label {
+            font-size: 20px;
+        }
+        .form-control {
+            height: 44px;
+            font-size: 20px;
+        }
+        .btn-add {
+            font-size: 20px;
+            transition: background-color 0.4s, border-color 0.4s, color 0.4s;
+        }
+    </style>
 </head>
 <body>
-
-<form th:method="POST" th:action="@{/}" th:object="${Book}">
-    <label for="title">Название: </label>
-    <input type="text" th:field="*{title}" id="title"/>
-    <br>
-    <label for="author">Автор: </label>
-    <input type="text" th:field="*{author}" id="author"/>
-    <br/>
-    <label for="year">Год издания: </label>
-    <input type="text" th:field="*{year}" id="year"/>
-    <br/>
-    <input type="submit" value="Добавить книгу"/>
-</form>
-
+<div class="container">
+    <div class="row">
+        <div class="col-auto page-content">
+            <form th:method="POST" th:action="@{/}" class="form-horizontal" th:object="${Book}">
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6 form-title">
+                        Добавить новую книгу
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="col-sm-3 control-label">Название: </label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{title}" class="form-control" id="title"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="author" class="col-sm-3 control-label">Автор: </label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{author}" class="form-control" id="author"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="year" class="col-sm-3 control-label">Год издания: </label>
+                    <div class="col-sm-6">
+                        <input type="text" th:field="*{year}" class="form-control" id="year"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <input type="submit" class="btn btn-primary btn-lg btn-add" value="Добавить книгу"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
